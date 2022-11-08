@@ -5,3 +5,19 @@ $ heroku buildpacks:set heroku/php
 $ heroku buildpacks:set https://github.com/heroku/heroku-buildpack-php
 $ heroku config:set HEROKU_PHP_PLATFORM_REPOSITORIES="https://mybucket.s3.amazonaws.com/heroku-20/packages.json"
 $ heroku config:set HEROKU_PHP_PLATFORM_REPOSITORIES="https://customrepo.com/packages.json?composer-repository-only=ext-igbinary,ext-redis"
+{
+    "require": {
+        "monolog/monolog": "2.0.*"
+    }
+}require __DIR__ . '/vendor/autoload.php';
+
+$log = new Monolog\Logger('name');
+$log->pushHandler(new Monolog\Handler\StreamHandler('app.log', Monolog\Logger::WARNING));
+$log->warning('Foo');
+{
+    "autoload": {
+        "psr-4": {"Acme\\": "src/"}
+    }
+}
+$loader = require __DIR__ . '/vendor/autoload.php';
+$loader->addPsr4('Acme\\Test\\', __DIR__);
