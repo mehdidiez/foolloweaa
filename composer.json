@@ -1,23 +1,23 @@
-$ echo '{}' > composer.json
-$ git add composer.json
-$ git commit -m "add composer.json for PHP app detection"
-$ heroku buildpacks:set heroku/php
-$ heroku buildpacks:set https://github.com/heroku/heroku-buildpack-php
-$ heroku config:set HEROKU_PHP_PLATFORM_REPOSITORIES="https://mybucket.s3.amazonaws.com/heroku-20/packages.json"
-$ heroku config:set HEROKU_PHP_PLATFORM_REPOSITORIES="https://customrepo.com/packages.json?composer-repository-only=ext-igbinary,ext-redis"
 {
+    "name": "mehdidiez/instagram-fac-page",
+    "description": "A description of my project",
+    "type": "project",
     "require": {
-        "monolog/monolog": "2.0.*"
-    }
-}require __DIR__ . '/vendor/autoload.php';
-
-$log = new Monolog\Logger('name');
-$log->pushHandler(new Monolog\Handler\StreamHandler('app.log', Monolog\Logger::WARNING));
-$log->warning('Foo');
-{
-    "autoload": {
-        "psr-4": {"Acme\\": "src/"}
+        "php": ">=5.5.9",
+        "doctrine/cache": "1.4.*",
+        "elasticsearch/elasticsearch": "~2.0",
+        "monolog/monolog": "~1.0",
+        "knplabs/github-api": "~1.2",
+        "ezyang/htmlpurifier": "~4.6",
+        "easyrdf/easyrdf": "0.9.*",
+        "hoa/compiler": "~2.15",
+        "hoa/visitor": "~1.15",
+        "collectiveaccess/service-wrapper": "v1.1",
+        "phpoffice/phppresentation": "dev-master",
+        "phpoffice/phpword": "v0.13.*"
+      },
+    "require-dev": {
+        "phpunit/phpunit": "4.3.*",
+        "maximebf/debugbar": ">=1.0.0"
     }
 }
-$loader = require __DIR__ . '/vendor/autoload.php';
-$loader->addPsr4('Acme\\Test\\', __DIR__);
